@@ -9,7 +9,7 @@ public:
 	void addAccount(const std::string&, int, double);
 	BankAccount* findAccount(int);
 	void transferFunds(int, int, double);
-	void displayAllAccounts();
+	void displayAllAccounts() const;
 private:
 	std::vector<BankAccount> system;
 };

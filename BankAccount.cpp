@@ -1,5 +1,4 @@
 #include <iostream>
-#include <initializer_list>
 #include <string>
 #include "BankAccount.hpp"
 
@@ -21,20 +20,6 @@ BankAccount::BankAccount(const BankAccount& other)
 	, accountNumber{other.accountNumber}
 	, balance{other.balance}
 	{}
-
-BankAccount::BankAccount(std::initializer_list<std::string> init){
-	auto it = init.begin();
-	if(init.size() == 3){
-		accountHolder = *it;
-		accountNumber = std::stoi(*(it + 1));
-		balance = std::stod(*(it + 2));
-	}
-	else{
-		accountHolder = "Unknown";
-		accountNumber = 0;
-		balance = 0.0;
-	}
-}
 
 BankAccount::~BankAccount(){
 	std::cout<<"Destructor is called"<<std::endl;
@@ -64,7 +49,7 @@ bool BankAccount::withdraw(double amount){
 	return true;
 }
 
-void BankAccount::display(){
+void BankAccount::display() const{
 	std::cout<<"\nAccount holder - "<<accountHolder<<"\nAccount number - "<<accountNumber<<"\nBalance - "<<balance<<std::endl;
 }
 

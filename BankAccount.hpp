@@ -7,12 +7,11 @@ public:
 	BankAccount();
 	BankAccount(const std::string&, int, double);
 	BankAccount(const BankAccount&);
-	BankAccount(std::initializer_list<std::string>);
 	~BankAccount();
 
 	void deposit(double amount);
 	bool withdraw(double amount);
-	void display();	
+	void display() const;	
 
 	int getAccountNumber() const;
 	double get_balance() const;

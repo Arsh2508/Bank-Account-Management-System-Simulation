@@ -4,7 +4,7 @@
 
 void BankSystem::addAccount(const std::string& name, int accountNumber, double initialBalance){
 	BankAccount obj(name, accountNumber, initialBalance);
-	system.push_back(obj);
+	system.emplace_back(obj);
 }
 
 BankAccount* BankSystem::findAccount(int accountNumber){
@@ -35,7 +35,7 @@ void BankSystem::transferFunds(int senderAcc, int receiverAcc, double amount){
 }
 
 
-void BankSystem::displayAllAccounts(){
+void BankSystem::displayAllAccounts() const{
 	for(int i = 0; i < system.size(); ++i){
 		system[i].display();
 	}

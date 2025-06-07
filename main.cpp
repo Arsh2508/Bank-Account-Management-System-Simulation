@@ -1,5 +1,4 @@
 #include <iostream>
-#include <initializer_list>
 #include "BankSystem.hpp"
 
 int main()
@@ -12,9 +11,6 @@ int main()
 	
 	bank.findAccount(1)->deposit(100);
 	bank.findAccount(2)->withdraw(100);
-
-	BankAccount obj({"fff", "122", "250.5"});
-	obj.display();
 
 	bank.displayAllAccounts();
 
