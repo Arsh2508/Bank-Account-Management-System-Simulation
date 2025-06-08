@@ -3,8 +3,7 @@
 #include "BankSystem.hpp"
 
 void BankSystem::addAccount(const std::string& name, int accountNumber, double initialBalance){
-	BankAccount obj(name, accountNumber, initialBalance);
-	system.emplace_back(obj);
+	system.emplace_back(name, accountNumber, initialBalance);
 }
 
 BankAccount* BankSystem::findAccount(int accountNumber){
