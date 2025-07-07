@@ -4,10 +4,10 @@
 #include <exception>
 #include <string>
 
-class AccoutNotFound : public std::exception{
+class AccountNotFound : public std::exception{
 public:
-    AccoutNotFound(const std::string& msg);
-    ~AccoutNotFound() noexcept override = default;
+    AccountNotFound(const std::string& msg);
+    ~AccountNotFound() noexcept override = default;
 
     const char* what()const noexcept override;
 private:

@@ -22,7 +22,7 @@ void BankSystem::transferFunds(int senderAcc, int receiverAcc, double amount){
 	BankAccount* receiver = findAccount(receiverAcc);
 	
 	if(!sender || !receiver){
-		throw AccoutNotFound("Sender or receiver account not found!");
+		throw AccountNotFound("Sender or receiver account not found!");
 	}
 
 	try{

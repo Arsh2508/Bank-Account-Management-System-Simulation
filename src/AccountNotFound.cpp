@@ -1,10 +1,10 @@
 #include "AccountNotFound.hpp"
 
-AccoutNotFound::AccoutNotFound(const std::string &msg)
+AccountNotFound::AccountNotFound(const std::string &msg)
     : messege{msg}
 {}
 
-const char *AccoutNotFound::what() const noexcept
+const char *AccountNotFound::what() const noexcept
 {
     return messege.c_str();
 }

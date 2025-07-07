@@ -11,7 +11,7 @@ int main()
 	try{
 		bank.transferFunds(1, 2, 100);
 	}
-	catch(AccoutNotFound& acc){
+	catch(AccountNotFound& acc){
 		std::cout<<acc.what()<<std::endl;
 	}
 
