@@ -1,13 +1,13 @@
-#include <string>
 #ifndef BANKACCOUNT_HPP
 #define BANKACCOUNT_HPP
 
+#include <string>
 class BankAccount{
 public:
 	BankAccount();
 	BankAccount(const std::string&, int, double);
 	BankAccount(const BankAccount&);
-	~BankAccount();
+	~BankAccount() = default;
 
 	void deposit(double amount);
 	bool withdraw(double amount);

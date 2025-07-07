@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
+#include <exception>
 #include "BankAccount.hpp"
-
+#include "InvalidTransaction.hpp"
 
 BankAccount::BankAccount()
 	: accountHolder{"Unknown"}
@@ -21,14 +22,10 @@ BankAccount::BankAccount(const BankAccount& other)
 	, balance{other.balance}
 	{}
 
-BankAccount::~BankAccount(){
-	std::cout<<"Destructor is called"<<std::endl;
-}
 
 void BankAccount::deposit(double amount){
 	if(amount <= 0){
-		std::cout<<"Deposit failed: Amount must be positive"<<std::endl;
-		return;
+		throw InvalidTransaction("Deposit failed: Amount must be positive!");
 	}
 
 	balance += amount;
@@ -37,12 +34,10 @@ void BankAccount::deposit(double amount){
 
 bool BankAccount::withdraw(double amount){
 	if(amount <= 0){
-		std::cout<<"Withdraw failed: amount must be positive"<<std::endl;
-		return false;
+		throw InvalidTransaction("Withdraw failed: amount must be positive!");
 	}
 	if(balance < amount){
-		std::cout<<"Error! Withdraw failed: Not enough balance"<<std::endl;
-		return false;
+		throw InvalidTransaction("Error! Withdraw failed: Not enough balance!");
 	}
 
 	balance -= amount;

@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include "BankSystem.hpp"
+#include "InvalidTransaction.hpp"
+#include "AccountNotFound.hpp"
 
 void BankSystem::addAccount(const std::string& name, int accountNumber, double initialBalance){
 	system.emplace_back(name, accountNumber, initialBalance);
@@ -20,17 +22,16 @@ void BankSystem::transferFunds(int senderAcc, int receiverAcc, double amount){
 	BankAccount* receiver = findAccount(receiverAcc);
 	
 	if(!sender || !receiver){
-		std::cout<<"Sender or receiver account not found!"<<std::endl;
-		return;
+		throw AccoutNotFound("Sender or receiver account not found!");
 	}
 
-	if(sender->get_balance() < amount){
-		std::cout<<"Transfer failed! No enough balance."<<std::endl;
-		return;
+	try{
+		sender->withdraw(amount);
+		receiver->deposit(amount);
 	}
-
-	sender->withdraw(amount);
-	receiver->deposit(amount);
+	catch(InvalidTransaction& inv){
+		std::cout<<inv.what()<<std::endl;
+	}
 }
 
 
